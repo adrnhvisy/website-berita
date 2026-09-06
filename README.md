@@ -1,58 +1,79 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+ # Panduan Kerja Tim di GitHub
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Alur singkat
 
-## About Laravel
+`Fork → Clone → Buat branch → Kerjakan perubahan → Commit → Push → Pull Request → Review → Merge`
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 1. Melakukan Fork
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Fork adalah membuat salinan repository orang lain ke akun GitHub sendiri.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Buka halaman repository asli di GitHub.
+2. Klik tombol **Fork** di kanan atas.
+3. Pilih akun pribadi atau organisasi tujuan.
+4. Klik **Create fork**.
 
-## Learning Laravel
+Setelah selesai, repository akan muncul di akun sendiri dengan alamat seperti:
+`https://github.com/username-kamu/website-berita`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 2. Clone repository hasil fork
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Buka repository hasil fork, klik tombol hijau **Code**, pilih **HTTPS**, lalu salin URL-nya.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Di terminal jalankan:
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/username-kamu/website-berita.git
+cd website-berita
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Kemudian buat branch untuk pekerjaan sendiri:
 
-## Contributing
+```bash
+git checkout -b fitur/nama-fitur
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Jangan mengerjakan langsung di branch `main` agar pekerjaan anggota tim tidak saling bertabrakan.
 
-## Code of Conduct
+## 3. Push ke repository fork sendiri
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Setelah selesai mengubah kode:
 
-## Security Vulnerabilities
+```bash
+git add .
+git commit -m "Jelaskan perubahan yang dibuat"
+git push -u origin fitur/nama-fitur
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+`origin` adalah repository fork milik sendiri. Setelah push, branch akan muncul di GitHub.
 
-## License
+## 4. Membuat Pull Request ke repository asli
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Buka repository fork di GitHub.
+2. Klik **Compare & pull request** atau tab **Pull requests** lalu **New pull request**.
+3. Pastikan arah tujuan benar:
+	 - **base repository**: repository asli milik pemilik proyek.
+	 - **base branch**: biasanya `main`.
+	 - **head repository**: repository fork milik sendiri.
+	 - **compare branch**: branch pekerjaan, misalnya `fitur/nama-fitur`.
+4. Isi judul dan penjelasan perubahan.
+5. Klik **Create pull request**.
+
+Pemilik repository asli akan melakukan review. Jika diminta perbaikan, lakukan perubahan di branch yang sama, lalu jalankan kembali `git add`, `git commit`, dan `git push`. Pull Request akan otomatis diperbarui.
+
+## Kerja tim sehari-hari
+
+- Setiap anggota membuat branch sendiri.
+- Sebelum mulai bekerja, ambil perubahan terbaru:
+
+	```bash
+	git checkout main
+	git pull origin main
+	```
+
+- Kerjakan fitur di branch masing-masing.
+- Buat Pull Request untuk setiap fitur atau perbaikan.
+- Jangan memasukkan `.env`, password, API key, database lokal, atau file pribadi ke GitHub.
+- Setelah Pull Request di-merge, perbarui branch lokal sebelum memulai pekerjaan berikutnya.
+
+Dengan alur ini, repository asli tetap aman dan setiap perubahan dapat diperiksa sebelum digabungkan.
