@@ -9,24 +9,27 @@ use RuntimeException;
 
 class AdminUserSeeder extends Seeder
 {
-    private const EMAIL = 'admin@example.com';
-
-    private const PASSWORD = 'Admin123!';
-
     public function run(): void
     {
         if (app()->isProduction()) {
             throw new RuntimeException('AdminUserSeeder hanya boleh dijalankan pada environment development atau testing.');
         }
 
-        $user = User::where('email', self::EMAIL)->first();
+        $email = (string) config('admin.email');
+        $password = (string) config('admin.password');
+
+        if ($password === '') {
+            throw new RuntimeException('ADMIN_PASSWORD wajib diisi sebelum menjalankan AdminUserSeeder.');
+        }
+
+        $user = User::where('email', $email)->first();
 
         if ($user === null) {
             User::create([
                 'name' => 'Administrator',
                 'username' => 'admin',
-                'email' => self::EMAIL,
-                'password' => Hash::make(self::PASSWORD),
+                'email' => $email,
+                'password' => Hash::make($password),
                 'status' => 'active',
                 'email_verified_at' => now(),
             ]);

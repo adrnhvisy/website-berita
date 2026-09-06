@@ -129,6 +129,10 @@ class AdminAuthenticationTest extends TestCase
 
     public function test_admin_seeder_is_idempotent_and_hashes_password(): void
     {
+        $adminPassword = 'test-admin-password';
+
+        config(['admin.password' => $adminPassword]);
+
         $this->seed(AdminUserSeeder::class);
         $this->seed(AdminUserSeeder::class);
 
@@ -136,6 +140,6 @@ class AdminAuthenticationTest extends TestCase
 
         $this->assertSame(1, User::where('email', 'admin@example.com')->count());
         $this->assertSame('active', $admin->status);
-        $this->assertTrue(Hash::check('Admin123!', $admin->password));
+        $this->assertTrue(Hash::check($adminPassword, $admin->password));
     }
 }
