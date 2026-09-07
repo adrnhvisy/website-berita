@@ -75,5 +75,3 @@ Pemilik repository asli akan melakukan review. Jika diminta perbaikan, lakukan p
 - Buat Pull Request untuk setiap fitur atau perbaikan.
 - Jangan memasukkan `.env`, password, API key, database lokal, atau file pribadi ke GitHub.
 - Setelah Pull Request di-merge, perbarui branch lokal sebelum memulai pekerjaan berikutnya.
-
-Dengan alur ini, repository asli tetap aman dan setiap perubahan dapat diperiksa sebelum digabungkan.
