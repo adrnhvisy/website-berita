@@ -12,6 +12,8 @@ class ContentClusterAssignment extends Model
 
     public const UPDATED_AT = null;
 
+    public const CREATED_AT = null;
+
     protected $fillable = ['article_id', 'content_cluster_id', 'ml_model_run_id', 'distance_to_centroid', 'assigned_at'];
 
     protected $casts = ['distance_to_centroid' => 'decimal:6', 'assigned_at' => 'datetime'];
