@@ -25,6 +25,19 @@ database/*.sqlite*
 AGENTS.md
 CLAUDE.md
 boost.json
+# Project planning and AI documentation (kept local by request)
+PRD.md
+ARCHITECTURE.md
+DATABASE.md
+UI-UX.md
+DESIGN.md
+FEATURES.md
+API.md
+SECURITY.md
+TESTING.md
+ML.md
+ROADMAP.md
+.github/copilot-instructions.md
 /node_modules
 /public/build
 /public/fonts-manifest.dev.json
