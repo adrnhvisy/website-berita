@@ -75,3 +75,15 @@ Pemilik repository asli akan melakukan review. Jika diminta perbaikan, lakukan p
 - Buat Pull Request untuk setiap fitur atau perbaikan.
 - Jangan memasukkan `.env`, password, API key, database lokal, atau file pribadi ke GitHub.
 - Setelah Pull Request di-merge, perbarui branch lokal sebelum memulai pekerjaan berikutnya.
+
+
+## Tahapan Instalasi & Penggunaan
+1. Download project menggunakan git dengan perintah: `git clone <url>` lalu masuk ke dalam `folder project` atau download secara manual
+2. Install dependency: `composer update` dan `composer install`
+3. Copy file environment: `cp .env.example .env` atau `copy .env.example .env`
+4. Konfigurasi database pada .env
+5. Generate application key: `php artisan key:generate`
+6. Storage link: `php artisan storage:link`
+7. Jalankan migration: `php artisan migrate --seed`
+8. Jalankan project: `php artisan serve` dan `npm run build` -> `npm run dev` `(opsional: kalau mau melakukan perubahan pada website. ini akan mempermudah <^.^>)`
+9. Akses ke dashboard: `127.0.0.1:8000/admin/login`, login menggunakan email: `admin@example.com` password: `BeritaAdmin@2026!`
